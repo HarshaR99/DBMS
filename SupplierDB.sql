@@ -55,5 +55,14 @@ Part.pid=c1.pid and Part.pid=c2.pid and c1.cost > c2.cost;
 
 select distinct Supplier.sid from Supplier,Catalog,Part
 where Catalog.sid = Supplier.sid and Catalog.pid = Part.pid 
-and Part.color in ('Red','Green')
+and Part.color in ('Red','Green');
+
+-- query to find sname of supplier who charges most for that part
+select s.sname,p.pname,c.cost
+from supplier s , part p,catalog c
+where s.sid = c.sid and p.pid = c.pid and
+c.cost = ( select max(cost)
+			         from catalog
+            where c.pid = pid
+	         );
 
