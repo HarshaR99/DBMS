@@ -3,12 +3,12 @@ use test;
 
 create table branch(
 branch_name varchar(20) primary key,
-branch_city varchar(10),
+branch_city varchar(20),
 assets int);
 
 create table BankAccount(
 accno int primary key,
-branchname varchar(10),
+branchname varchar(20),
 balance int,
 foreign key(branchname) references branch(branch_name)
 );	
@@ -22,13 +22,13 @@ primary key(customername,accno)
 create table BankCustomer(
 customername varchar(20) ,
 customerstreet varchar(20),
-city varchar(10),
+city varchar(20),
 primary key(customername,customerstreet,city),
 foreign key(customername) references Depositer(customername)
 );
 
 create table loan(
-loannumber varchar(10) primary key,
+loannumber varchar(20) primary key,
 branchname varchar(20),
 amount int,
 foreign key(branchname) references branch(branch_name)
